@@ -1,0 +1,270 @@
+{
+  "name": "@wattry/gitlab-sdk",
+  "version": "0.1.3-alpha",
+  "description": "A wrapper SDK around the Gitlab Rest API",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/types/*.d.ts",
+  "files": [
+    "dist"
+   ],
+  "scripts": {
+    "tsup:es": "tsup src --tsconfig ./tsconfig.esm.json --format esm -d dist/esm",
+    "tsup:cjs": "tsup src --tsconfig ./tsconfig.cjs.json --format cjs -d dist/cjs --cjsInterop",
+    "tsup:types": "tsup src --tsconfig ./tsconfig.types.json --dts-only -d dist/types",
+    "build": "rm -rf ./dist && concurrently 'pnpm:tsup:cjs' 'pnpm:tsup:es' 'pnpm:tsup:types'",
+    "build:es": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:ts": "rm -rf ./dist && concurrently 'pnpm:build:cjs' 'pnpm:build:es' 'pnpm:build:types'"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.mjs"
+    },
+    "./v4": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.mjs"
+    },
+    "./admin": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/esm/v4/admin.js",
+      "import": "./dist/esm/v4/admin.mjs"
+    },
+    "./application": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/application.js",
+      "import": "./dist/esm/v4/application.mjs"
+    },
+    "./applications": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/applications.js",
+      "import": "./dist/esm/v4/applications.mjs"
+    },
+    "./avatar": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/avatar.js",
+      "import": "./dist/esm/v4/avatar.mjs"
+    },
+    "./broadcast_messages": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/broadcast_messages.js",
+      "import": "./dist/esm/v4/broadcast_messages.mjs"
+    },
+    "./bulk_imports": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/bulk_imports.js",
+      "import": "./dist/esm/v4/bulk_imports.mjs"
+    },
+    "./container_registry_event": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/container_registry_event.js",
+      "import": "./dist/esm/v4/container_registry_event.mjs"
+    },
+    "./deploy_keys": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/deploy_keys.js",
+      "import": "./dist/esm/v4/deploy_keys.mjs"
+    },
+    "./deploy_tokens": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/deploy_tokens.js",
+      "import": "./dist/esm/v4/deploy_tokens.mjs"
+    },
+    "./events": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/events.js",
+      "import": "./dist/esm/v4/events.mjs"
+    },
+    "./feature_flags": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/feature_flags.js",
+      "import": "./dist/esm/v4/feature_flags.mjs"
+    },
+    "./features": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/features.js",
+      "import": "./dist/esm/v4/features.mjs"
+    },
+    "./geo": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/geo.js",
+      "import": "./dist/esm/v4/geo.mjs"
+    },
+    "./group": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/group.js",
+      "import": "./dist/esm/v4/group.mjs"
+    },
+    "./groups": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/groups.js",
+      "import": "./dist/esm/v4/groups.mjs"
+    },
+    "./hooks": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/hooks.js",
+      "import": "./dist/esm/v4/hooks.mjs"
+    },
+    "./import": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/import.js",
+      "import": "./dist/esm/v4/import.mjs"
+    },
+    "./integrations": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/integrations.js",
+      "import": "./dist/esm/v4/integrations.mjs"
+    },
+    "./job": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/job.js",
+      "import": "./dist/esm/v4/job.mjs"
+    },
+    "./jobs": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/jobs.js",
+      "import": "./dist/esm/v4/jobs.mjs"
+    },
+    "./keys": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/keys.js",
+      "import": "./dist/esm/v4/keys.mjs"
+    },
+    "./markdown": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/markdown.js",
+      "import": "./dist/esm/v4/markdown.mjs"
+    },
+    "./merge_requests": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/merge_requests.js",
+      "import": "./dist/esm/v4/merge_requests.mjs"
+    },
+    "./metadata": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/metadata.js",
+      "import": "./dist/esm/v4/metadata.mjs"
+    },
+    "./namespaces": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/namespaces.js",
+      "import": "./dist/esm/v4/namespaces.mjs"
+    },
+    "./packages": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/packages.js",
+      "import": "./dist/esm/v4/packages.mjs"
+    },
+    "./pages": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/pages.js",
+      "import": "./dist/esm/v4/pages.mjs"
+    },
+    "./personal_access_tokens": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/personal_access_tokens.js",
+      "import": "./dist/esm/v4/personal_access_tokens.mjs"
+    },
+    "./project_repository_storage_moves": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/project_repository_storage_moves.js",
+      "import": "./dist/esm/v4/project_repository_storage_moves.mjs"
+    },
+    "./projects": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/projects.js",
+      "import": "./dist/esm/v4/projects.mjs"
+    },
+    "./registry": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/registry.js",
+      "import": "./dist/esm/v4/registry.mjs"
+    },
+    "./runners": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/runners.js",
+      "import": "./dist/esm/v4/runners.mjs"
+    },
+    "./slack": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/slack.js",
+      "import": "./dist/esm/v4/slack.mjs"
+    },
+    "./snippet_repository_storage_moves": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/snippet_repository_storage_moves.js",
+      "import": "./dist/esm/v4/snippet_repository_storage_moves.mjs"
+    },
+    "./snippets": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/snippets.js",
+      "import": "./dist/esm/v4/snippets.mjs"
+    },
+    "./suggestions": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/suggestions.js",
+      "import": "./dist/esm/v4/suggestions.mjs"
+    },
+    "./topics": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/topics.js",
+      "import": "./dist/esm/v4/topics.mjs"
+    },
+    "./usage_data": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/usage_data.js",
+      "import": "./dist/esm/v4/usage_data.mjs"
+    },
+    "./user_counts": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/user_counts.js",
+      "import": "./dist/esm/v4/user_counts.mjs"
+    },
+    "./user": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/user.js",
+      "import": "./dist/esm/v4/user.mjs"
+    },
+    "./users": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/users.js",
+      "import": "./dist/esm/v4/users.mjs"
+    },
+    "./version": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/version.js",
+      "import": "./dist/esm/v4/version.mjs"
+    },
+    "./web_commits": {
+      "types": "./dist/types/*.d.ts",
+      "require": "./dist/cjs/v4/web_commits.js",
+      "import": "./dist/esm/v4/web_commits.mjs"
+    }
+  },
+  "author": "wattry",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wattry/gitlab-sdk.git"
+  },
+  "keywords": [
+    "gitlab",
+    "rest",
+    "sdk"
+  ],
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/node": "20.11.25",
+    "concurrently": "9.0.1",
+    "ts-node": "10.9.2",
+    "tsup": "^8.3.0",
+    "typescript": "5.6.2"
+  }
+}
