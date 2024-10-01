@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "baseUrl": ".",
+    "outDir": "dist/esm",
+    "rootDir": "src",
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+  },
+  "include": [
+    "src"
+  ]
+}
