@@ -1,154 +1,24 @@
-export default (client: any, request: any) => ({
+export default (client: any, handler: any) => ({
   unleash: {
-    get: {
-      method: "get",
-      url: "api/v4/feature_flags/unleash/:project_id",
-      resource: "unleash",
-      variable: [
-        {
-          name: "project_id",
-          type: "string"
-        }
-      ],
-      headers: {},
-      description: "",
-      query: [
-        {
-          name: "instance_id",
-          type: "string"
-        },
-        {
-          name: "app_name",
-          type: "string"
-        }
-      ],
-      data: null,
-      /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
-      send({ params = {}, query = {}, clientOptions = {} } = {}) { return request.apply(this, [client, { params, query, clientOptions }]) }
-    },
+    /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
+    get: ({params = {},query = {},clientOptions = {}} = {}) => handler.apply({method:"get",url:"api/v4/feature_flags/unleash/:project_id",resource:"v4",variable:[{name:"project_id",type:"string"}],headers:{},query:[{name:"instance_id",type:"string"},{name:"app_name",type:"string"}],data:null}, [client, { params, query, clientOptions}]),
     features: {
-      get: {
-        method: "get",
-        url: "api/v4/feature_flags/unleash/:project_id/features",
-        resource: "features",
-        variable: [
-          {
-            name: "project_id",
-            type: "string"
-          }
-        ],
-        headers: {},
-        description: "Get a list of features (deprecated, v2 client support)",
-        query: [
-          {
-            name: "instance_id",
-            type: "string"
-          },
-          {
-            name: "app_name",
-            type: "string"
-          }
-        ],
-        data: null,
-        /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
-        send({ params = {}, query = {}, clientOptions = {} } = {}) { return request.apply(this, [client, { params, query, clientOptions }]) }
-      }
+      /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
+      get: ({params = {},query = {},clientOptions = {}} = {}) => handler.apply({method:"get",url:"api/v4/feature_flags/unleash/:project_id/features",resource:"feature_flags",variable:[{name:"project_id",type:"string"}],headers:{},query:[{name:"instance_id",type:"string"},{name:"app_name",type:"string"}],data:null}, [client, { params, query, clientOptions}])
     },
     client: {
       features: {
-        get: {
-          method: "get",
-          url: "api/v4/feature_flags/unleash/:project_id/client/features",
-          resource: "features",
-          variable: [
-            {
-              name: "project_id",
-              type: "string"
-            }
-          ],
-          headers: {},
-          description: "Get a list of features",
-          query: [
-            {
-              name: "instance_id",
-              type: "string"
-            },
-            {
-              name: "app_name",
-              type: "string"
-            }
-          ],
-          data: null,
-          /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
-          send({ params = {}, query = {}, clientOptions = {} } = {}) { return request.apply(this, [client, { params, query, clientOptions }]) }
-        }
+        /** @param {{params:{project_id:string},query:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:200}]} */
+        get: ({params = {},query = {},clientOptions = {}} = {}) => handler.apply({method:"get",url:"api/v4/feature_flags/unleash/:project_id/client/features",resource:"unleash",variable:[{name:"project_id",type:"string"}],headers:{},query:[{name:"instance_id",type:"string"},{name:"app_name",type:"string"}],data:null}, [client, { params, query, clientOptions}])
       },
       register: {
-        post: {
-          method: "post",
-          url: "api/v4/feature_flags/unleash/:project_id/client/register",
-          resource: "register",
-          variable: [
-            {
-              name: "project_id",
-              type: "string"
-            }
-          ],
-          headers: {
-            "Content-Type": "application/json"
-          },
-          description: "",
-          query: [],
-          data: {
-            mode: "raw",
-            raw: {
-              instance_id: "string",
-              app_name: "string"
-            },
-            options: {
-              raw: {
-                language: "json"
-              }
-            }
-          },
-
-          /** @param {{params:{project_id:string},data:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:201}]} */
-          send({ params = {}, data = {}, clientOptions = {} } = {}) { return request.apply(this, [client, { params, data, clientOptions }]) }
-        }
+        /** @param {{params:{project_id:string},data:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:201}]} */
+        post: ({params = {},data = {},clientOptions = {}} = {}) => handler.apply({method:"post",url:"api/v4/feature_flags/unleash/:project_id/client/register",resource:"unleash",variable:[{name:"project_id",type:"string"}],headers:{"Content-Type":"application/json"},query:[],data:{mode:"raw",raw:{instance_id:"string",app_name:"string"},options:{raw:{language:"json"}}}}, [client, { params, data, clientOptions}])
       },
       metrics: {
-        post: {
-          method: "post",
-          url: "api/v4/feature_flags/unleash/:project_id/client/metrics",
-          resource: "metrics",
-          variable: [
-            {
-              name: "project_id",
-              type: "string"
-            }
-          ],
-          headers: {
-            "Content-Type": "application/json"
-          },
-          description: "",
-          query: [],
-          data: {
-            mode: "raw",
-            raw: {
-              instance_id: "string",
-              app_name: "string"
-            },
-            options: {
-              raw: {
-                language: "json"
-              }
-            }
-          },
-
-          /** @param {{params:{project_id:string},data:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:201}]} */
-          send({ params = {}, data = {}, clientOptions = {} } = {}) { return request.apply(this, [client, { params, data, clientOptions }]) }
-        }
+        /** @param {{params:{project_id:string},data:{instance_id:string,app_name:string},clientOptions:{}}} requestOptions * @return {[{code:201}]} */
+        post: ({params = {},data = {},clientOptions = {}} = {}) => handler.apply({method:"post",url:"api/v4/feature_flags/unleash/:project_id/client/metrics",resource:"unleash",variable:[{name:"project_id",type:"string"}],headers:{"Content-Type":"application/json"},query:[],data:{mode:"raw",raw:{instance_id:"string",app_name:"string"},options:{raw:{language:"json"}}}}, [client, { params, data, clientOptions}])
       }
     }
   }
-});
+})

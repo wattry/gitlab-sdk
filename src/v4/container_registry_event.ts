@@ -1,16 +1,6 @@
-export default (client: any, request: any) => ({
+export default (client: any, handler: any) => ({
   events: {
-    post: {
-      method: "post",
-      url: "api/v4/container_registry_event/events",
-      resource: "events",
-      variable: [],
-      headers: {},
-      description: "This feature was introduced in GitLab 12.10",
-      query: [],
-      data: null,
-      /** @param {{clientOptions:{}}} requestOptions * @return {[{code:200},{code:401}]} */
-      send({ clientOptions = {} } = {}) { return request.apply(this, [client, { clientOptions }]) }
-    }
+    /** @param {{clientOptions:{}}} requestOptions * @return {[{code:200},{code:401}]} */
+    post: ({clientOptions = {}} = {}) => handler.apply({method:"post",url:"api/v4/container_registry_event/events",resource:"v4",variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
   }
-});
+})
