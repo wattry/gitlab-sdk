@@ -1,6 +1,6 @@
 {
   "name": "@wattry/gitlab-sdk",
-  "version": "0.1.4-alpha",
+  "version": "0.1.5-alpha",
   "description": "A wrapper SDK around the Gitlab Rest API",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
@@ -20,227 +20,227 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/types/**/*.d.ts",
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.mjs"
     },
     "./v4": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/types/**/*.d.ts",
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.mjs"
     },
     "./admin": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/admin.d.ts",
       "require": "./dist/esm/v4/admin.js",
       "import": "./dist/esm/v4/admin.mjs"
     },
     "./application": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/application.d.ts",
       "require": "./dist/cjs/v4/application.js",
       "import": "./dist/esm/v4/application.mjs"
     },
     "./applications": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/applications.d.ts",
       "require": "./dist/cjs/v4/applications.js",
       "import": "./dist/esm/v4/applications.mjs"
     },
     "./avatar": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/avatar.d.ts",
       "require": "./dist/cjs/v4/avatar.js",
       "import": "./dist/esm/v4/avatar.mjs"
     },
     "./broadcast_messages": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/broadcast_messages.d.ts",
       "require": "./dist/cjs/v4/broadcast_messages.js",
       "import": "./dist/esm/v4/broadcast_messages.mjs"
     },
     "./bulk_imports": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/bulk_imports.d.ts",
       "require": "./dist/cjs/v4/bulk_imports.js",
       "import": "./dist/esm/v4/bulk_imports.mjs"
     },
     "./container_registry_event": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/container_registry_event.d.ts",
       "require": "./dist/cjs/v4/container_registry_event.js",
       "import": "./dist/esm/v4/container_registry_event.mjs"
     },
     "./deploy_keys": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/deploy_keys.d.ts",
       "require": "./dist/cjs/v4/deploy_keys.js",
       "import": "./dist/esm/v4/deploy_keys.mjs"
     },
     "./deploy_tokens": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/deploy_tokens.d.ts",
       "require": "./dist/cjs/v4/deploy_tokens.js",
       "import": "./dist/esm/v4/deploy_tokens.mjs"
     },
     "./events": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/events.d.ts",
       "require": "./dist/cjs/v4/events.js",
       "import": "./dist/esm/v4/events.mjs"
     },
     "./feature_flags": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/feature_flags.d.ts",
       "require": "./dist/cjs/v4/feature_flags.js",
       "import": "./dist/esm/v4/feature_flags.mjs"
     },
     "./features": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/features.d.ts",
       "require": "./dist/cjs/v4/features.js",
       "import": "./dist/esm/v4/features.mjs"
     },
     "./geo": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/geo.d.ts",
       "require": "./dist/cjs/v4/geo.js",
       "import": "./dist/esm/v4/geo.mjs"
     },
     "./group": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/group.d.ts",
       "require": "./dist/cjs/v4/group.js",
       "import": "./dist/esm/v4/group.mjs"
     },
     "./groups": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/groups.d.ts",
       "require": "./dist/cjs/v4/groups.js",
       "import": "./dist/esm/v4/groups.mjs"
     },
     "./hooks": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/hooks.d.ts",
       "require": "./dist/cjs/v4/hooks.js",
       "import": "./dist/esm/v4/hooks.mjs"
     },
     "./import": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/import.d.ts",
       "require": "./dist/cjs/v4/import.js",
       "import": "./dist/esm/v4/import.mjs"
     },
     "./integrations": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/integrations.d.ts",
       "require": "./dist/cjs/v4/integrations.js",
       "import": "./dist/esm/v4/integrations.mjs"
     },
     "./job": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/job.d.ts",
       "require": "./dist/cjs/v4/job.js",
       "import": "./dist/esm/v4/job.mjs"
     },
     "./jobs": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/jobs.d.ts",
       "require": "./dist/cjs/v4/jobs.js",
       "import": "./dist/esm/v4/jobs.mjs"
     },
     "./keys": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/keys.d.ts",
       "require": "./dist/cjs/v4/keys.js",
       "import": "./dist/esm/v4/keys.mjs"
     },
     "./markdown": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/markdown.d.ts",
       "require": "./dist/cjs/v4/markdown.js",
       "import": "./dist/esm/v4/markdown.mjs"
     },
     "./merge_requests": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/merge_requests.d.ts",
       "require": "./dist/cjs/v4/merge_requests.js",
       "import": "./dist/esm/v4/merge_requests.mjs"
     },
     "./metadata": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/metadata.d.ts",
       "require": "./dist/cjs/v4/metadata.js",
       "import": "./dist/esm/v4/metadata.mjs"
     },
     "./namespaces": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/namespaces.d.ts",
       "require": "./dist/cjs/v4/namespaces.js",
       "import": "./dist/esm/v4/namespaces.mjs"
     },
     "./packages": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/packages.d.ts",
       "require": "./dist/cjs/v4/packages.js",
       "import": "./dist/esm/v4/packages.mjs"
     },
     "./pages": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/pages.d.ts",
       "require": "./dist/cjs/v4/pages.js",
       "import": "./dist/esm/v4/pages.mjs"
     },
     "./personal_access_tokens": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/personal_access_tokens.d.ts",
       "require": "./dist/cjs/v4/personal_access_tokens.js",
       "import": "./dist/esm/v4/personal_access_tokens.mjs"
     },
     "./project_repository_storage_moves": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/project_repository_storage_moves.d.ts",
       "require": "./dist/cjs/v4/project_repository_storage_moves.js",
       "import": "./dist/esm/v4/project_repository_storage_moves.mjs"
     },
     "./projects": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/projects.d.ts",
       "require": "./dist/cjs/v4/projects.js",
       "import": "./dist/esm/v4/projects.mjs"
     },
     "./registry": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/registry.d.ts",
       "require": "./dist/cjs/v4/registry.js",
       "import": "./dist/esm/v4/registry.mjs"
     },
     "./runners": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/runners.d.ts",
       "require": "./dist/cjs/v4/runners.js",
       "import": "./dist/esm/v4/runners.mjs"
     },
     "./slack": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/slack.d.ts",
       "require": "./dist/cjs/v4/slack.js",
       "import": "./dist/esm/v4/slack.mjs"
     },
     "./snippet_repository_storage_moves": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/snippet_repository_storage_moves.d.ts",
       "require": "./dist/cjs/v4/snippet_repository_storage_moves.js",
       "import": "./dist/esm/v4/snippet_repository_storage_moves.mjs"
     },
     "./snippets": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/snippets.d.ts",
       "require": "./dist/cjs/v4/snippets.js",
       "import": "./dist/esm/v4/snippets.mjs"
     },
     "./suggestions": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/suggestions.d.ts",
       "require": "./dist/cjs/v4/suggestions.js",
       "import": "./dist/esm/v4/suggestions.mjs"
     },
     "./topics": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/topics.d.ts",
       "require": "./dist/cjs/v4/topics.js",
       "import": "./dist/esm/v4/topics.mjs"
     },
     "./usage_data": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/usage_data.d.ts",
       "require": "./dist/cjs/v4/usage_data.js",
       "import": "./dist/esm/v4/usage_data.mjs"
     },
     "./user_counts": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/user_counts.d.ts",
       "require": "./dist/cjs/v4/user_counts.js",
       "import": "./dist/esm/v4/user_counts.mjs"
     },
     "./user": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/user.d.ts",
       "require": "./dist/cjs/v4/user.js",
       "import": "./dist/esm/v4/user.mjs"
     },
     "./users": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/users.d.ts",
       "require": "./dist/cjs/v4/users.js",
       "import": "./dist/esm/v4/users.mjs"
     },
     "./version": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/version.d.ts",
       "require": "./dist/cjs/v4/version.js",
       "import": "./dist/esm/v4/version.mjs"
     },
     "./web_commits": {
-      "types": "./dist/types/*.d.ts",
+      "types": "./dist/esm/v4/web_commits.d.ts",
       "require": "./dist/cjs/v4/web_commits.js",
       "import": "./dist/esm/v4/web_commits.mjs"
     }
