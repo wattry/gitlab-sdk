@@ -24,6 +24,9 @@
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.mjs"
     },
+    "./types": {
+      "types": "./dist/types/**/*.d.ts"
+    },
     "./v4": {
       "types": "./dist/types/**/*.d.ts",
       "require": "./dist/cjs/index.js",
