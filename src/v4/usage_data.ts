@@ -1,4 +1,101 @@
-export default (client: any, handler: any) => ({
+export interface UsageData {
+  service_ping: {
+    get: ({ clientOptions }: {
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 401;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  increment_counter: {
+    post: ({ data, clientOptions }: {
+      data: {
+        event: string;
+      };
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  increment_unique_users: {
+    post: ({ data, clientOptions }: {
+      data: {
+        event: string;
+      };
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  track_event: {
+    post: ({ data, clientOptions }: {
+      data: {
+        event: string;
+        namespace_id: number;
+        project_id: number;
+      };
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  metric_definitions: {
+    get: ({ clientOptions }: {
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  non_sql_metrics: {
+    get: ({ clientOptions }: {
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 401;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+  queries: {
+    get: ({ clientOptions }: {
+      clientOptions: any;
+    }) => Promise<[{
+      code: 200;
+    }, {
+      code: 401;
+    }, {
+      code: 403;
+    }, {
+      code: 404;
+    }]>;
+  };
+};
+
+export default (client: any, handler: any): UsageData => ({
   "service_ping": {
     get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:401},{code:403},{code:404}]> => handler.apply({method:'get',url:'api/v4/usage_data/service_ping',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
   },

@@ -1,4 +1,681 @@
-export default (client: any, handler: any) => ({
+export interface Packages {
+  conan: {
+    v1: {
+      ping: {
+        get: ({ clientOptions }: {
+          clientOptions: any;
+        }) => Promise<[{
+          code: 200;
+        }, {
+          code: 404;
+        }]>;
+      };
+      conans: {
+        search: {
+          get: ({ query, clientOptions }: {
+            query: {
+              q: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 404;
+          }]>;
+        };
+        getOne: ({ params, clientOptions }: {
+          params: {
+            package_name: string;
+            package_version: string;
+            package_username: string;
+            package_channel: string;
+          };
+          clientOptions: any;
+        }) => Promise<[{
+          code: 200;
+          data: {
+            recipe_snapshot: any;
+          };
+        }, {
+          code: 400;
+        }, {
+          code: 403;
+        }, {
+          code: 404;
+        }]>;
+        delete: ({ params, clientOptions }: {
+          params: {
+            package_name: string;
+            package_version: string;
+            package_username: string;
+            package_channel: string;
+          };
+          clientOptions: any;
+        }) => Promise<[{
+          code: 204;
+        }, {
+          code: 400;
+        }, {
+          code: 403;
+        }, {
+          code: 404;
+        }]>;
+        packages: {
+          getOne: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+              conan_package_reference: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: {
+              package_snapshot: any;
+            };
+          }, {
+            code: 400;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          digest: {
+            get: ({ params, clientOptions }: {
+              params: {
+                package_name: string;
+                package_version: string;
+                package_username: string;
+                package_channel: string;
+                conan_package_reference: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+              data: {
+                package_urls: any;
+              };
+            }, {
+              code: 400;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+          download_urls: {
+            get: ({ params, clientOptions }: {
+              params: {
+                package_name: string;
+                package_version: string;
+                package_username: string;
+                package_channel: string;
+                conan_package_reference: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+              data: {
+                package_urls: any;
+              };
+            }, {
+              code: 400;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+          upload_urls: {
+            post: ({ params, clientOptions }: {
+              params: {
+                package_name: string;
+                package_version: string;
+                package_username: string;
+                package_channel: string;
+                conan_package_reference: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+              data: {
+                upload_urls: any;
+              };
+            }, {
+              code: 400;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+        digest: {
+          get: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: {
+              recipe_urls: any;
+            };
+          }, {
+            code: 400;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+        };
+        download_urls: {
+          get: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: {
+              recipe_urls: any;
+            };
+          }, {
+            code: 400;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+        };
+        upload_urls: {
+          post: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: {
+              upload_urls: any;
+            };
+          }, {
+            code: 400;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+        };
+      };
+      users: {
+        authenticate: {
+          get: ({ clientOptions }: {
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 401;
+          }, {
+            code: 404;
+          }]>;
+        };
+        check_credentials: {
+          get: ({ clientOptions }: {
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 401;
+          }, {
+            code: 404;
+          }]>;
+        };
+      };
+      files: {
+        export: {
+          getOne: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+              recipe_revision: string;
+              file_name: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 400;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          put: ({ params, data, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+              recipe_revision: string;
+              file_name: string;
+            };
+            data: {
+              file: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 400;
+          }, {
+            code: 401;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          authorize: {
+            put: ({ params, clientOptions }: {
+              params: {
+                package_name: string;
+                package_version: string;
+                package_username: string;
+                package_channel: string;
+                recipe_revision: string;
+                file_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+            }, {
+              code: 400;
+            }, {
+              code: 401;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+        package: {
+          getOne: ({ params, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+              recipe_revision: string;
+              conan_package_reference: string;
+              package_revision: string;
+              file_name: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          put: ({ params, data, clientOptions }: {
+            params: {
+              package_name: string;
+              package_version: string;
+              package_username: string;
+              package_channel: string;
+              recipe_revision: string;
+              conan_package_reference: string;
+              package_revision: string;
+              file_name: string;
+            };
+            data: {
+              file: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 400;
+          }, {
+            code: 401;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          authorize: {
+            put: ({ params, clientOptions }: {
+              params: {
+                package_name: string;
+                package_version: string;
+                package_username: string;
+                package_channel: string;
+                recipe_revision: string;
+                conan_package_reference: string;
+                package_revision: string;
+                file_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+            }, {
+              code: 400;
+            }, {
+              code: 401;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+      };
+    };
+  };
+  maven: {
+    "*path": {
+      getOne: ({ params, query, clientOptions }: {
+        params: {
+          file_name: string;
+        };
+        query: {
+          path: string;
+        };
+        clientOptions: any;
+      }) => Promise<[{
+        code: 200;
+      }, {
+        code: 401;
+      }, {
+        code: 403;
+      }, {
+        code: 404;
+      }]>;
+    };
+  };
+  npm: {
+    "-": {
+      package: {
+        "*package_name": {
+          "dist-tags": {
+            get: ({ query, clientOptions }: {
+              query: {
+                package_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+              data: {
+                dist_tags: any;
+              };
+            }, {
+              code: 400;
+            }, {
+              code: 401;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+            put: ({ params, data, clientOptions }: {
+              params: {
+                tag: string;
+              };
+              data: {
+                package_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 204;
+            }, {
+              code: 400;
+            }, {
+              code: 401;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+            delete: ({ params, query, clientOptions }: {
+              params: {
+                tag: string;
+              };
+              query: {
+                package_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 204;
+            }, {
+              code: 400;
+            }, {
+              code: 401;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+      };
+      npm: {
+        v1: {
+          security: {
+            advisories: {
+              bulk: {
+                post: ({ clientOptions }: {
+                  clientOptions: any;
+                }) => Promise<[{
+                  code: 200;
+                }, {
+                  code: 307;
+                }, {
+                  code: 401;
+                }, {
+                  code: 403;
+                }, {
+                  code: 404;
+                }]>;
+              };
+            };
+            audits: {
+              quick: {
+                post: ({ clientOptions }: {
+                  clientOptions: any;
+                }) => Promise<[{
+                  code: 200;
+                }, {
+                  code: 307;
+                }, {
+                  code: 401;
+                }, {
+                  code: 403;
+                }, {
+                  code: 404;
+                }]>;
+              };
+            };
+          };
+        };
+      };
+    };
+    "*package_name": {
+      get: ({ query, clientOptions }: {
+        query: {
+          package_name: string;
+        };
+        clientOptions: any;
+      }) => Promise<[{
+        code: 200;
+        data: {
+          name: string;
+          versions: any;
+          "dist-tags": any;
+        };
+      }, {
+        code: 302;
+      }, {
+        code: 400;
+      }, {
+        code: 401;
+      }, {
+        code: 403;
+      }, {
+        code: 404;
+      }]>;
+    };
+  };
+  terraform: {
+    modules: {
+      v1: {
+        getOne: ({ params, clientOptions }: {
+          params: {
+            module_namespace: string;
+            module_name: string;
+            module_system: string;
+          };
+          clientOptions: any;
+        }) => Promise<[{
+          code: 200;
+          data: {
+            name: string;
+            provider: string;
+            providers: string;
+            root: string;
+            source: string;
+            submodules: string;
+            version: string;
+            versions: string;
+          };
+        }, {
+          code: 403;
+        }, {
+          code: 404;
+        }]>;
+        versions: {
+          get: ({ params, clientOptions }: {
+            params: {
+              module_namespace: string;
+              module_name: string;
+              module_system: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: [{
+              modules: string;
+            }, {
+              modules: string;
+            }];
+          }, {
+            code: 403;
+          }]>;
+        };
+        download: {
+          get: ({ params, clientOptions }: {
+            params: {
+              module_namespace: string;
+              module_name: string;
+              module_system: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 302;
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+        };
+        "*module_version": {
+          get: ({ params, query, clientOptions }: {
+            params: {
+              module_namespace: string;
+              module_name: string;
+              module_system: string;
+            };
+            query: {
+              module_version: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+            data: {
+              name: string;
+              provider: string;
+              providers: string;
+              root: string;
+              source: string;
+              submodules: string;
+              version: string;
+              versions: string;
+            };
+          }, {
+            code: 403;
+          }, {
+            code: 404;
+          }]>;
+          download: {
+            get: ({ params, query, clientOptions }: {
+              params: {
+                module_namespace: string;
+                module_name: string;
+                module_system: string;
+              };
+              query: {
+                module_version: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 204;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+          file: {
+            get: ({ params, query, clientOptions }: {
+              params: {
+                module_namespace: string;
+                module_name: string;
+                module_system: string;
+              };
+              query: {
+                module_version: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+              data: string;
+            }, {
+              code: 403;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+      };
+    };
+  };
+};
+
+export default (client: any, handler: any): Packages => ({
   "conan": {
     "v1": {
       "ping": {

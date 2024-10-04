@@ -1,4 +1,78 @@
-export default (client: any, handler: any) => ({
+export interface Group {
+  "-": {
+    packages: {
+      composer: {
+        packages: {
+          get: ({ params, clientOptions }: {
+            params: {
+              id: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 401;
+          }, {
+            code: 404;
+          }]>;
+        };
+        p: {
+          getOne: ({ params, clientOptions }: {
+            params: {
+              id: string;
+              sha: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 401;
+          }, {
+            code: 404;
+          }]>;
+        };
+        p2: {
+          "*package_name": {
+            get: ({ params, query, clientOptions }: {
+              params: {
+                id: string;
+              };
+              query: {
+                package_name: string;
+              };
+              clientOptions: any;
+            }) => Promise<[{
+              code: 200;
+            }, {
+              code: 401;
+            }, {
+              code: 404;
+            }]>;
+          };
+        };
+        "*package_name": {
+          get: ({ params, query, clientOptions }: {
+            params: {
+              id: string;
+            };
+            query: {
+              package_name: string;
+            };
+            clientOptions: any;
+          }) => Promise<[{
+            code: 200;
+          }, {
+            code: 401;
+          }, {
+            code: 404;
+          }]>;
+        };
+      };
+    };
+  };
+};
+
+export default (client: any, handler: any): Group => ({
   "-": {
     "packages": {
       "composer": {

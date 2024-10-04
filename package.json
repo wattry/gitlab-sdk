@@ -1,13 +1,13 @@
 {
   "name": "@wattry/gitlab-sdk",
-  "version": "0.1.5-alpha",
+  "version": "0.1.6-alpha",
   "description": "A wrapper SDK around the Gitlab Rest API",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
   "types": "./dist/types/*.d.ts",
   "files": [
     "dist"
-   ],
+  ],
   "scripts": {
     "tsup:es": "tsup src --tsconfig ./tsconfig.esm.json --format esm -d dist/esm",
     "tsup:cjs": "tsup src --tsconfig ./tsconfig.cjs.json --format cjs -d dist/cjs --cjsInterop",
@@ -247,9 +247,6 @@
   },
   "author": "wattry",
   "license": "Apache-2.0",
-  "dependencies": {
-    "rimraf": "^6.0.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wattry/gitlab-sdk.git"
@@ -263,6 +260,7 @@
     "@tsconfig/node20": "20.1.4",
     "@types/node": "20.11.25",
     "concurrently": "9.0.1",
+    "rimraf": "^6.0.1",
     "ts-node": "10.9.2",
     "tsup": "^8.3.0",
     "typescript": "5.6.2"

@@ -1,4 +1,68 @@
-export default (client: any, handler: any) => ({
+export interface Integrations {
+  slack: {
+    events: {
+      post: ({ data, clientOptions }: {
+        data: {
+          token: string;
+          team_id: string;
+          api_app_id: string;
+          event: any;
+          type: string;
+          event_id: string;
+          event_time: number;
+          authed_users: [string, string];
+        };
+        clientOptions: any;
+      }) => Promise<[{
+        code: 200;
+      }, {
+        code: 204;
+      }, {
+        code: 401;
+      }]>;
+    };
+    interactions: {
+      post: ({ clientOptions }: {
+        clientOptions: any;
+      }) => Promise<[{
+        code: 201;
+      }]>;
+    };
+    options: {
+      post: ({ clientOptions }: {
+        clientOptions: any;
+      }) => Promise<[{
+        code: 201;
+      }]>;
+    };
+  };
+  jira_connect: {
+    subscriptions: {
+      post: ({ data, clientOptions }: {
+        data: {
+          jwt: string;
+          namespace_path: string;
+        };
+        clientOptions: any;
+      }) => Promise<[{
+        code: 201;
+        data: {
+          success: {};
+        };
+      }, {
+        code: 400;
+      }, {
+        code: 401;
+      }, {
+        code: 403;
+      }, {
+        code: 404;
+      }]>;
+    };
+  };
+};
+
+export default (client: any, handler: any): Integrations => ({
   "slack": {
     "events": {
       post: ({data,clientOptions}: {data:{token:string,team_id:string,api_app_id:string,event:any,type:string,event_id:string,event_time:number,authed_users:[string,string]},clientOptions:any}): Promise<[{code:200},{code:204},{code:401}]> => handler.apply({method:'post',url:'api/v4/integrations/slack/events',resource:'integrations',variable:[],headers:{'Content-Type':'application/json'},query:[],data:{mode:'raw',raw:{token:'string',team_id:'string',api_app_id:'string',event:'object',type:'string',event_id:'string',event_time:'number',authed_users:['string','string']},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}])
