@@ -1,4 +1,5 @@
 export interface User {
+  get: ({ clientOptions }: { clientOptions: any }) => Promise<[{ code: 200, data: { id: string, key: string, created_at: string } }]>,
   keys: {
     get: ({ query, clientOptions }: {
       query: {
@@ -363,7 +364,7 @@ export interface User {
 };
 
 export default (client: any, handler: any): User => ({
-  getOne: ({ clientOptions }: { clientOptions: any }): Promise<[{ code: 200, data: { id: string, key: string, created_at: string } }]> => handler.apply({ method: 'get', url: 'api/v4/user/gpg_keys/:key_id', resource: 'v4', variable: [{ name: 'key_id', type: 'string' }], headers: { Accept: 'application/json' }, query: [], data: null }, [client, { clientOptions }]),
+  get: ({ clientOptions }: { clientOptions: any }): Promise<[{ code: 200, data: { id: string, key: string, created_at: string } }]> => handler.apply({ method: 'get', url: 'api/v4/user/gpg_keys/:key_id', resource: 'v4', variable: [{ name: 'key_id', type: 'string' }], headers: { Accept: 'application/json' }, query: [], data: null }, [client, { clientOptions }]),
   "keys": {
     get: ({query,clientOptions}: {query:{page:string,per_page:string},clientOptions:any}): Promise<[{code:200,data:{id:number,title:string,created_at:Date,expires_at:Date,key:string,usage_type:string}}]> => handler.apply({method:'get',url:'api/v4/user/keys',resource:'v4',variable:[],headers:{Accept:'application/json'},query:[{name:'page',type:'string'},{name:'per_page',type:'string'}],data:null}, [client, {query, clientOptions}]),
     post: ({data,clientOptions}: {data:{key:string,title:string,expires_at:Date,usage_type:string},clientOptions:any}): Promise<[{code:201,data:{id:number,title:string,created_at:Date,expires_at:Date,key:string,usage_type:string}}]> => handler.apply({method:'post',url:'api/v4/user/keys',resource:'v4',variable:[],headers:{'Content-Type':'application/json',Accept:'application/json'},query:[],data:{mode:'raw',raw:{key:'string',title:'string',expires_at:'dateTime',usage_type:'auth_and_signing'},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}]),
