@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
+import { Client, Handler } from './client';
+
 export interface Applications {
-  post: ({ data, clientOptions }: {
+  post: ({ data }: {
     data: {
       name: string;
       redirect_uri: string;
       scopes: string;
       confidential: true;
     };
-    clientOptions: any;
-  }) => Promise<[{
+  }, options?: {}) => Promise<{
     code: 200;
     data: {
       id: string;
@@ -17,10 +19,8 @@ export interface Applications {
       confidential: boolean;
       secret: string;
     };
-  }]>;
-  get: ({ clientOptions }: {
-    clientOptions: any;
-  }) => Promise<[{
+  }>;
+  get: ({ }: {}, options?: {}) => Promise<{
     code: 200;
     data: [{
       id: string;
@@ -35,22 +35,20 @@ export interface Applications {
       callback_url: string;
       confidential: boolean;
     }];
-  }]>;
-  delete: ({ params, clientOptions }: {
+  }>;
+  delete: ({ params }: {
     params: {
       id: string;
     };
-    clientOptions: any;
-  }) => Promise<[{
+  }, options?: {}) => Promise<{
     code: 204;
-  }]>;
+  }>;
   "renew-secret": {
-    post: ({ params, clientOptions }: {
+    post: ({ params }: {
       params: {
         id: string;
       };
-      clientOptions: any;
-    }) => Promise<[{
+    }, options?: {}) => Promise<{
       code: 200;
       data: {
         id: string;
@@ -60,16 +58,15 @@ export interface Applications {
         confidential: boolean;
         secret: string;
       };
-    }]>;
+    }>;
   };
 };
 
-
-export default (client: any, handler: any): Applications => ({
-  post: ({data,clientOptions}: {data:{name:string,redirect_uri:string,scopes:string,confidential:true},clientOptions:any}): Promise<[{code:200,data:{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean,secret:string}}]> => handler.apply({method:'post',url:'api/v4/applications',resource:'api',variable:[],headers:{'Content-Type':'application/json',Accept:'application/json'},query:[],data:{mode:'raw',raw:{name:'string',redirect_uri:'string',scopes:'string',confidential:true},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}]),
-  get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200,data:[{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean},{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean}]}]> => handler.apply({method:'get',url:'api/v4/applications',resource:'api',variable:[],headers:{Accept:'application/json'},query:[],data:null}, [client, {clientOptions}]),
-  delete: ({params,clientOptions}: {params:{id:string},clientOptions:any}): Promise<[{code:204}]> => handler.apply({method:'delete',url:'api/v4/applications/:id',resource:'api',variable:[{name:'id',type:'string'}],headers:{},query:[],data:null}, [client, { params, clientOptions}]),
+export default (client: Client, handler: Handler): Applications => ({
+  post: ({data}: {data:{name:string,redirect_uri:string,scopes:string,confidential:true}}, options?: {}): Promise<{code:200,data:{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean,secret:string}}> => handler.apply({method:'post',url:'api/v4/applications',headers:{'Content-Type':'application/json',Accept:'application/json'},variable:[],data:{mode:'raw',raw:{name:'string',redirect_uri:'string',scopes:'string',confidential:true},options:{raw:{language:'json'}}}}, [client, {data}, options]),
+  get: ({}: {}, options?: {}): Promise<{code:200,data:[{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean},{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean}]}> => handler.apply({method:'get',url:'api/v4/applications',headers:{Accept:'application/json'},variable:[]}, [client, {}, options]),
+  delete: ({params}: {params:{id:string}}, options?: {}): Promise<{code:204}> => handler.apply({method:'delete',url:'api/v4/applications/:id',variable:[{name:'id',type:'string'}]}, [client, { params}, options]),
   "renew-secret": {
-    post: ({params,clientOptions}: {params:{id:string},clientOptions:any}): Promise<[{code:200,data:{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean,secret:string}}]> => handler.apply({method:'post',url:'api/v4/applications/:id/renew-secret',resource:'v4',variable:[{name:'id',type:'string'}],headers:{Accept:'application/json'},query:[],data:null}, [client, { params, clientOptions}])
+    post: ({params}: {params:{id:string}}, options?: {}): Promise<{code:200,data:{id:string,application_id:string,application_name:string,callback_url:string,confidential:boolean,secret:string}}> => handler.apply({method:'post',url:'api/v4/applications/:id/renew-secret',headers:{Accept:'application/json'},variable:[{name:'id',type:'string'}]}, [client, { params}, options])
   }
 })

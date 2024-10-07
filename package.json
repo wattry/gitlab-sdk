@@ -1,10 +1,10 @@
 {
   "name": "@wattry/gitlab-sdk",
-  "version": "0.1.6-alpha",
+  "version": "0.1.7-alpha",
   "description": "A wrapper SDK around the Gitlab Rest API",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
-  "types": "./dist/types/*.d.ts",
+  "types": "./dist/types/**/*.d.ts",
   "files": [
     "dist"
   ],
@@ -267,5 +267,8 @@
     "ts-node": "10.9.2",
     "tsup": "^8.3.0",
     "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
   }
 }

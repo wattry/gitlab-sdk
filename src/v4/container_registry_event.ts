@@ -1,17 +1,18 @@
-export interface ContainerRegisterEvent {
+/* eslint-disable max-len */
+import { Client, Handler } from './client';
+
+export interface ContainerRegistryEvent {
   events: {
-    post: ({ clientOptions }: {
-      clientOptions: any;
-    }) => Promise<[{
+    post: ({ }: {}, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 401;
-    }]>;
+    }>;
   };
 };
 
-export default (client: any, handler: any): ContainerRegisterEvent => ({
+export default (client: Client, handler: Handler): ContainerRegistryEvent => ({
   "events": {
-    post: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:401}]> => handler.apply({method:'post',url:'api/v4/container_registry_event/events',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
+    post: ({}: {}, options?: {}): Promise<{code:200}|{code:401}> => handler.apply({method:'post',url:'api/v4/container_registry_event/events',variable:[]}, [client, {}, options])
   }
 })

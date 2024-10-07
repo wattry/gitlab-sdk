@@ -1,120 +1,112 @@
+/* eslint-disable max-len */
+import { Client, Handler } from './client';
+
 export interface UsageData {
   service_ping: {
-    get: ({ clientOptions }: {
-      clientOptions: any;
-    }) => Promise<[{
+    get: ({ }: {}, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 401;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   increment_counter: {
-    post: ({ data, clientOptions }: {
+    post: ({ data }: {
       data: {
         event: string;
       };
-      clientOptions: any;
-    }) => Promise<[{
+    }, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   increment_unique_users: {
-    post: ({ data, clientOptions }: {
+    post: ({ data }: {
       data: {
         event: string;
       };
-      clientOptions: any;
-    }) => Promise<[{
+    }, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   track_event: {
-    post: ({ data, clientOptions }: {
+    post: ({ data }: {
       data: {
         event: string;
         namespace_id: number;
         project_id: number;
       };
-      clientOptions: any;
-    }) => Promise<[{
+    }, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   metric_definitions: {
-    get: ({ clientOptions }: {
-      clientOptions: any;
-    }) => Promise<[{
+    get: ({ }: {}, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   non_sql_metrics: {
-    get: ({ clientOptions }: {
-      clientOptions: any;
-    }) => Promise<[{
+    get: ({ }: {}, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 401;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
   queries: {
-    get: ({ clientOptions }: {
-      clientOptions: any;
-    }) => Promise<[{
+    get: ({ }: {}, options?: {}) => Promise<{
       code: 200;
-    }, {
+    } | {
       code: 401;
-    }, {
+    } | {
       code: 403;
-    }, {
+    } | {
       code: 404;
-    }]>;
+    }>;
   };
 };
 
-export default (client: any, handler: any): UsageData => ({
+export default (client: Client, handler: Handler): UsageData => ({
   "service_ping": {
-    get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:401},{code:403},{code:404}]> => handler.apply({method:'get',url:'api/v4/usage_data/service_ping',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
+    get: ({}: {}, options?: {}): Promise<{code:200}|{code:401}|{code:403}|{code:404}> => handler.apply({method:'get',url:'api/v4/usage_data/service_ping',variable:[]}, [client, {}, options])
   },
   "increment_counter": {
-    post: ({data,clientOptions}: {data:{event:string},clientOptions:any}): Promise<[{code:200},{code:403},{code:404}]> => handler.apply({method:'post',url:'api/v4/usage_data/increment_counter',resource:'v4',variable:[],headers:{'Content-Type':'application/json'},query:[],data:{mode:'raw',raw:{event:'string'},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}])
+    post: ({data}: {data:{event:string}}, options?: {}): Promise<{code:200}|{code:403}|{code:404}> => handler.apply({method:'post',url:'api/v4/usage_data/increment_counter',headers:{'Content-Type':'application/json'},variable:[],data:{mode:'raw',raw:{event:'string'},options:{raw:{language:'json'}}}}, [client, {data}, options])
   },
   "increment_unique_users": {
-    post: ({data,clientOptions}: {data:{event:string},clientOptions:any}): Promise<[{code:200},{code:403},{code:404}]> => handler.apply({method:'post',url:'api/v4/usage_data/increment_unique_users',resource:'v4',variable:[],headers:{'Content-Type':'application/json'},query:[],data:{mode:'raw',raw:{event:'string'},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}])
+    post: ({data}: {data:{event:string}}, options?: {}): Promise<{code:200}|{code:403}|{code:404}> => handler.apply({method:'post',url:'api/v4/usage_data/increment_unique_users',headers:{'Content-Type':'application/json'},variable:[],data:{mode:'raw',raw:{event:'string'},options:{raw:{language:'json'}}}}, [client, {data}, options])
   },
   "track_event": {
-    post: ({data,clientOptions}: {data:{event:string,namespace_id:number,project_id:number},clientOptions:any}): Promise<[{code:200},{code:403},{code:404}]> => handler.apply({method:'post',url:'api/v4/usage_data/track_event',resource:'v4',variable:[],headers:{'Content-Type':'application/json'},query:[],data:{mode:'raw',raw:{event:'string',namespace_id:'number',project_id:'number'},options:{raw:{language:'json'}}}}, [client, {data, clientOptions}])
+    post: ({data}: {data:{event:string,namespace_id:number,project_id:number}}, options?: {}): Promise<{code:200}|{code:403}|{code:404}> => handler.apply({method:'post',url:'api/v4/usage_data/track_event',headers:{'Content-Type':'application/json'},variable:[],data:{mode:'raw',raw:{event:'string',namespace_id:'number',project_id:'number'},options:{raw:{language:'json'}}}}, [client, {data}, options])
   },
   "metric_definitions": {
-    get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:403},{code:404}]> => handler.apply({method:'get',url:'api/v4/usage_data/metric_definitions',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
+    get: ({}: {}, options?: {}): Promise<{code:200}|{code:403}|{code:404}> => handler.apply({method:'get',url:'api/v4/usage_data/metric_definitions',variable:[]}, [client, {}, options])
   },
   "non_sql_metrics": {
-    get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:401},{code:403},{code:404}]> => handler.apply({method:'get',url:'api/v4/usage_data/non_sql_metrics',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
+    get: ({}: {}, options?: {}): Promise<{code:200}|{code:401}|{code:403}|{code:404}> => handler.apply({method:'get',url:'api/v4/usage_data/non_sql_metrics',variable:[]}, [client, {}, options])
   },
   "queries": {
-    get: ({clientOptions}: {clientOptions:any}): Promise<[{code:200},{code:401},{code:403},{code:404}]> => handler.apply({method:'get',url:'api/v4/usage_data/queries',resource:'v4',variable:[],headers:{},query:[],data:null}, [client, {clientOptions}])
+    get: ({}: {}, options?: {}): Promise<{code:200}|{code:401}|{code:403}|{code:404}> => handler.apply({method:'get',url:'api/v4/usage_data/queries',variable:[]}, [client, {}, options])
   }
 })

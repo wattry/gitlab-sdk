@@ -99,6 +99,6 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     // "skipLibCheck": true                              /* Skip type checking all .d.ts files. */
   },
-  "include": ["index.ts", "src"], // Specify files to include
+  "include": ["index.ts", "src", "client.ts"], // Specify files to include
   "exclude": ["node_modules/", "dist/", "eslint.config.mjs"] // Specify files to exclude
 }

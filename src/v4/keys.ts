@@ -1,10 +1,12 @@
+/* eslint-disable max-len */
+import { Client, Handler } from './client';
+
 export interface Keys {
-  get: ({ query, clientOptions }: {
-    query: {
+  get: ({ query }: {
+    query?: {
       fingerprint: string;
     };
-    clientOptions: any;
-  }) => Promise<[{
+  }, options?: {}) => Promise<{
     code: 200;
     data: {
       id: number;
@@ -40,14 +42,14 @@ export interface Keys {
       following: string;
       is_followed: string;
       local_time: string;
-      last_sign_in_at: Date;
-      confirmed_at: Date;
-      last_activity_on: Date;
+      last_sign_in_at: string;
+      confirmed_at: string;
+      last_activity_on: string;
       email: string;
       theme_id: number;
       color_scheme_id: number;
       projects_limit: number;
-      current_sign_in_at: Date;
+      current_sign_in_at: string;
       identities: {
         provider: string;
         extern_uid: string;
@@ -77,11 +79,7 @@ export interface Keys {
         locked: boolean;
         avatar_url: string;
         avatar_path: string;
-        custom_attributes: [{
-          value: any;
-        }, {
-          value: any;
-        }];
+        custom_attributes: [any, any];
         web_url: string;
       };
       email_reset_offered_at: string;
@@ -91,19 +89,18 @@ export interface Keys {
       enterprise_group_id: string;
       enterprise_group_associated_at: string;
     };
-  }]>;
-  getOne: ({ params, clientOptions }: {
+  }>;
+  getOne: ({ params }: {
     params: {
       id: string;
     };
-    clientOptions: any;
-  }) => Promise<[{
+  }, options?: {}) => Promise<{
     code: 200;
     data: {
       id: number;
       title: string;
-      created_at: Date;
-      expires_at: Date;
+      created_at: string;
+      expires_at: string;
       key: string;
       usage_type: string;
       user: {
@@ -114,11 +111,7 @@ export interface Keys {
         locked: boolean;
         avatar_url: string;
         avatar_path: string;
-        custom_attributes: [{
-          value: any;
-        }, {
-          value: any;
-        }];
+        custom_attributes: [any, any];
         web_url: string;
         created_at: string;
         bio: string;
@@ -138,23 +131,23 @@ export interface Keys {
         following: string;
         is_followed: string;
         local_time: string;
-        last_sign_in_at: Date;
-        confirmed_at: Date;
-        last_activity_on: Date;
+        last_sign_in_at: string;
+        confirmed_at: string;
+        last_activity_on: string;
         email: string;
         theme_id: number;
         color_scheme_id: number;
         projects_limit: number;
-        current_sign_in_at: Date;
+        current_sign_in_at: string;
         identities: {
           provider: {
-            value: any;
+            value: {};
           };
           extern_uid: {
-            value: any;
+            value: {};
           };
           saml_provider_id: {
-            value: any;
+            value: {};
           };
         };
         can_create_group: boolean;
@@ -167,21 +160,21 @@ export interface Keys {
         extra_shared_runners_minutes_limit: string;
         scim_identities: {
           extern_uid: {
-            value: any;
+            value: {};
           };
           group_id: {
-            value: any;
+            value: {};
           };
           active: {
-            value: any;
+            value: {};
           };
         };
       };
     };
-  }]>;
+  }>;
 };
 
-export default (client: any, handler: any): Keys => ({
-  get: ({query,clientOptions}: {query:{fingerprint:string},clientOptions:any}): Promise<[{code:200,data:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[{key:string,value:string},{key:string,value:string}],web_url:string,created_at:string,bio:string,location:string,public_email:string,skype:string,linkedin:string,twitter:string,discord:string,website_url:string,organization:string,job_title:string,pronouns:string,bot:string,work_information:string,followers:string,following:string,is_followed:string,local_time:string,last_sign_in_at:Date,confirmed_at:Date,last_activity_on:Date,email:string,theme_id:number,color_scheme_id:number,projects_limit:number,current_sign_in_at:Date,identities:{provider:string,extern_uid:string,saml_provider_id:string},can_create_group:boolean,can_create_project:boolean,two_factor_enabled:boolean,external:string,private_profile:boolean,commit_email:string,shared_runners_minutes_limit:string,extra_shared_runners_minutes_limit:string,scim_identities:{extern_uid:string,group_id:string,active:string},is_admin:string,note:string,namespace_id:string,created_by:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[{value:{}},{value:{}}],web_url:string},email_reset_offered_at:string,using_license_seat:string,is_auditor:string,provisioned_by_group_id:string,enterprise_group_id:string,enterprise_group_associated_at:string}}]> => handler.apply({method:'get',url:'api/v4/keys',resource:'api',variable:[],headers:{Accept:'application/json'},query:[{name:'fingerprint',type:'string'}],data:null}, [client, {query, clientOptions}]),
-  getOne: ({params,clientOptions}: {params:{id:string},clientOptions:any}): Promise<[{code:200,data:{id:number,title:string,created_at:Date,expires_at:Date,key:string,usage_type:string,user:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[{value:{}},{value:{}}],web_url:string,created_at:string,bio:string,location:string,public_email:string,skype:string,linkedin:string,twitter:string,discord:string,website_url:string,organization:string,job_title:string,pronouns:string,bot:string,work_information:string,followers:string,following:string,is_followed:string,local_time:string,last_sign_in_at:Date,confirmed_at:Date,last_activity_on:Date,email:string,theme_id:number,color_scheme_id:number,projects_limit:number,current_sign_in_at:Date,identities:{provider:{value:{}},extern_uid:{value:{}},saml_provider_id:{value:{}}},can_create_group:boolean,can_create_project:boolean,two_factor_enabled:boolean,external:string,private_profile:boolean,commit_email:string,shared_runners_minutes_limit:string,extra_shared_runners_minutes_limit:string,scim_identities:{extern_uid:{value:{}},group_id:{value:{}},active:{value:{}}}}}}]> => handler.apply({method:'get',url:'api/v4/keys/:id',resource:'api',variable:[{name:'id',type:'string'}],headers:{Accept:'application/json'},query:[],data:null}, [client, { params, clientOptions}])
+export default (client: Client, handler: Handler): Keys => ({
+  get: ({query}: {query?:{fingerprint:string}}, options?: {}): Promise<{code:200,data:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[{key:string,value:string},{key:string,value:string}],web_url:string,created_at:string,bio:string,location:string,public_email:string,skype:string,linkedin:string,twitter:string,discord:string,website_url:string,organization:string,job_title:string,pronouns:string,bot:string,work_information:string,followers:string,following:string,is_followed:string,local_time:string,last_sign_in_at:string,confirmed_at:string,last_activity_on:string,email:string,theme_id:number,color_scheme_id:number,projects_limit:number,current_sign_in_at:string,identities:{provider:string,extern_uid:string,saml_provider_id:string},can_create_group:boolean,can_create_project:boolean,two_factor_enabled:boolean,external:string,private_profile:boolean,commit_email:string,shared_runners_minutes_limit:string,extra_shared_runners_minutes_limit:string,scim_identities:{extern_uid:string,group_id:string,active:string},is_admin:string,note:string,namespace_id:string,created_by:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[any,any],web_url:string},email_reset_offered_at:string,using_license_seat:string,is_auditor:string,provisioned_by_group_id:string,enterprise_group_id:string,enterprise_group_associated_at:string}}> => handler.apply({method:'get',url:'api/v4/keys',headers:{Accept:'application/json'},variable:[],query:[{name:'fingerprint',type:'string'}]}, [client, {query}, options]),
+  getOne: ({params}: {params:{id:string}}, options?: {}): Promise<{code:200,data:{id:number,title:string,created_at:string,expires_at:string,key:string,usage_type:string,user:{id:number,username:string,name:string,state:string,locked:boolean,avatar_url:string,avatar_path:string,custom_attributes:[any,any],web_url:string,created_at:string,bio:string,location:string,public_email:string,skype:string,linkedin:string,twitter:string,discord:string,website_url:string,organization:string,job_title:string,pronouns:string,bot:string,work_information:string,followers:string,following:string,is_followed:string,local_time:string,last_sign_in_at:string,confirmed_at:string,last_activity_on:string,email:string,theme_id:number,color_scheme_id:number,projects_limit:number,current_sign_in_at:string,identities:{provider:any,extern_uid:any,saml_provider_id:any},can_create_group:boolean,can_create_project:boolean,two_factor_enabled:boolean,external:string,private_profile:boolean,commit_email:string,shared_runners_minutes_limit:string,extra_shared_runners_minutes_limit:string,scim_identities:{extern_uid:any,group_id:any,active:any}}}}> => handler.apply({method:'get',url:'api/v4/keys/:id',headers:{Accept:'application/json'},variable:[{name:'id',type:'string'}]}, [client, { params}, options])
 })
