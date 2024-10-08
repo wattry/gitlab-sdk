@@ -29049,7 +29049,7 @@ export interface Projects {
             code: 503;
         }>;
         authorize: {
-            post: ({}: {}, options?: {}) => Promise<{
+            post: (options?: {}) => Promise<{
                 code: 201;
             }>;
         };
@@ -37613,7 +37613,7 @@ export default (client: Client, handler: Handler): Projects => ({
   "import": {
     get: ({params}: {params:{id:string}}, options?: {}): Promise<{code:200,data:{id:number,description:string,name:string,name_with_namespace:string,path:string,path_with_namespace:string,created_at:string,import_status:string,import_type:string,correlation_id:string,failed_relations:[{id:string,created_at:string,exception_class:string,source:string,exception_message:string,relation_name:string,line_number:number},{id:string,created_at:string,exception_class:string,source:string,exception_message:string,relation_name:string,line_number:number}],import_error:string,stats:object}}|{code:400}|{code:401}|{code:403}|{code:404}|{code:503}> => handler.apply({method:'get',url:'api/v4/projects/:id/import',headers:{Accept:'application/json'},variable:[{name:'id',type:'string'}]}, [client, { params}, options]),
     "authorize": {
-      post: ({}: {}, options?: {}): Promise<{code:201}> => handler.apply({method:'post',url:'api/v4/projects/import/authorize',variable:[]}, [client, {}, options])
+      post: (options?: {}): Promise<{code:201}> => handler.apply({method:'post',url:'api/v4/projects/import/authorize',variable:[]}, [client, {}, options])
     }
   },
   "relation-imports": {

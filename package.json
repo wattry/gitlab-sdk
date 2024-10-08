@@ -1,6 +1,6 @@
 {
   "name": "@wattry/gitlab-sdk",
-  "version": "0.1.7-alpha",
+  "version": "0.1.8-alpha",
   "description": "A wrapper SDK around the Gitlab Rest API",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",

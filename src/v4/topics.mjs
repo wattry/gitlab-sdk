@@ -1,0 +1,17 @@
+/* eslint-disable max-len */
+export default (client, handler) => ({
+  /** @param {{query?:{search:string,without_projects:string,page:string,per_page:string,order_by:string,sort:string}}} request @param {any} [options={}] @return {Promise<{code:200,data:{id:string,name:string,title:string,description:string,total_projects_count:string,avatar_url:string}}>} */
+  get: ({query} = {}, options = {}) => handler.apply({method:'get',url:'api/v4/topics',headers:{Accept:'application/json'},variable:[],query:[{name:'search',type:'string'},{name:'without_projects',type:'string'},{name:'page',type:'string'},{name:'per_page',type:'string'},{name:'order_by',type:'string'},{name:'sort',type:'string'}]}, [client, {query}, options]),
+  /** @param {{data:{name:string,title:string,description:string,avatar:ArrayBuffer}}} request @param {any} [options={}] @return {Promise<{code:201,data:{id:string,name:string,title:string,description:string,total_projects_count:string,avatar_url:string}}>} */
+  post: ({data} = {}, options = {}) => handler.apply({method:'post',url:'api/v4/topics',headers:{'Content-Type':'application/json',Accept:'application/json'},variable:[],data:{mode:'raw',raw:{name:'string',title:'string',description:'string',avatar:'ArrayBuffer'},options:{raw:{language:'json'}}}}, [client, {data}, options]),
+  /** @param {{params:{id:string}}} request @param {any} [options={}] @return {Promise<{code:200,data:{id:string,name:string,title:string,description:string,total_projects_count:string,avatar_url:string}}>} */
+  getOne: ({params} = {}, options = {}) => handler.apply({method:'get',url:'api/v4/topics/:id',headers:{Accept:'application/json'},variable:[{name:'id',type:'string'}]}, [client, { params}, options]),
+  /** @param {{params:{id:string},data:{name:string,title:string,description:string,avatar:ArrayBuffer}}} request @param {any} [options={}] @return {Promise<{code:200,data:{id:string,name:string,title:string,description:string,total_projects_count:string,avatar_url:string}}>} */
+  put: ({params,data} = {}, options = {}) => handler.apply({method:'put',url:'api/v4/topics/:id',headers:{'Content-Type':'application/json',Accept:'application/json'},variable:[{name:'id',type:'string'}],data:{mode:'raw',raw:{name:'string',title:'string',description:'string',avatar:'ArrayBuffer'},options:{raw:{language:'json'}}}}, [client, { params, data}, options]),
+  /** @param {{params:{id:string}}} request @param {any} [options={}] @return {Promise<{code:204}>} */
+  delete: ({params} = {}, options = {}) => handler.apply({method:'delete',url:'api/v4/topics/:id',variable:[{name:'id',type:'string'}]}, [client, { params}, options]),
+  "merge": {
+    /** @param {{data:{source_topic_id:number,target_topic_id:number}}} request @param {any} [options={}] @return {Promise<{code:201,data:{id:string,name:string,title:string,description:string,total_projects_count:string,avatar_url:string}}>} */
+    post: ({data} = {}, options = {}) => handler.apply({method:'post',url:'api/v4/topics/merge',headers:{'Content-Type':'application/json',Accept:'application/json'},variable:[],data:{mode:'raw',raw:{source_topic_id:'number',target_topic_id:'number'},options:{raw:{language:'json'}}}}, [client, {data}, options])
+  }
+});
